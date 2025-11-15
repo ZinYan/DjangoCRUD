@@ -1,7 +1,11 @@
 from django.shortcuts import render
 
 # Create your views here.
-from django.shortcuts import HttpResponse,render
+from .models import Post
 
-def posts_list(request):
-    return render(request,'posts_list.html')
+def posts_list(request, *args, **kwargs) :
+  posts = Post.objects.all()
+  context = {
+    "posts" : posts
+  }
+  return render(request, "posts_list.html", context)
