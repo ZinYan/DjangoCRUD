@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from .models import Post
@@ -16,3 +16,13 @@ def posts_read(request, pk):
     "post" : post
   }
   return render(request, "posts_read.html", context)
+
+def posts_create(request): 
+  if request.method == "POST" :
+    Post.objects.create(
+    title=request.POST["title"],
+    user=request.POST["user"],
+    content=request.POST["content"],
+    )
+    return redirect("/posts")
+  return render(request, "posts_create.html")
