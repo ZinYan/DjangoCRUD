@@ -26,3 +26,16 @@ def posts_create(request):
     )
     return redirect("/posts")
   return render(request, "posts_create.html")
+
+def posts_update(request, pk):
+    post = Post.objects.get(id=pk)
+
+    if request.method == "POST":
+        post.title = request.POST["title"]
+        post.content = request.POST["content"]
+        post.user = request.POST["user"]
+        post.save()
+        return redirect(f"/posts/{pk}")
+
+    context = {"post": post}
+    return render(request, "posts_update.html", context)

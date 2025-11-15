@@ -4,4 +4,5 @@ urlpatterns = {
     path("",posts_list),
     path("<int:pk>/",posts_read),
     path("create/", posts_create),
+    path("<int:pk>/update/", posts_update),
 }
