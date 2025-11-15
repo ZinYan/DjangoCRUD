@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
+from .models import Post
 
 # Create your views here.
-from .models import Post
 
 def posts_list(request, *args, **kwargs) :
   posts = Post.objects.all()
@@ -24,7 +24,7 @@ def posts_create(request):
     user=request.POST["user"],
     content=request.POST["content"],
     )
-    return redirect("/posts")
+    return redirect("/posts/")
   return render(request, "posts_create.html")
 
 def posts_update(request, pk):

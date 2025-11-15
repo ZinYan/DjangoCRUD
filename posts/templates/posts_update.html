@@ -1,6 +1,6 @@
 <h1> 글 수정하기 </h1>
 
-<form action="/posts/{{post.id}}/update" method="post">
+<form action="/posts/{{post.id}}/update/" method="post">
   {% csrf_token %}
   <input name="title" placeholder="제목" value="{{post.title}}" /> <br/>
   <input name="user" placeholder="작성자" value="{{post.user}}" /> <br/>
