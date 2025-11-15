@@ -39,3 +39,9 @@ def posts_update(request, pk):
 
     context = {"post": post}
     return render(request, "posts_update.html", context)
+
+def posts_delete(request, pk):
+    if request.method == "POST":
+        post = Post.objects.get(id=pk)
+        post.delete()
+    return redirect("/posts/")
